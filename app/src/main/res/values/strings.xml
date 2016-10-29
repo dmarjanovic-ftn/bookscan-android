@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">BookScan</string>
+
+    <!-- Activity Login -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="btn_login">Log in</string>
+    <string name="no_account">You haven\'t account yet?</string>
+    <string name="register">Sign up now!</string>
+
+    <!-- Drawer and Settings options -->
+    <string name="home">Home</string>
+    <string name="scan">Scan Book</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

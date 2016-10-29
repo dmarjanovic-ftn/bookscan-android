@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_white_24dp"
+            android:title="@string/home" />
+
+        <item
+            android:id="@+id/scan"
+            android:icon="@drawable/ic_import_contacts_white_24dp"
+            android:title="@string/scan" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_thumb_down_white_24dp"
+            android:title="@string/logout" />
+    </group>
+
+</menu>
