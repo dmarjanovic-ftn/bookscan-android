@@ -17,6 +17,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+    }
 }
 
 def SupportVersion = '24.2.1'
@@ -34,6 +42,10 @@ dependencies {
     compile "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:rest-spring-api:$AAVersion"
     compile "org.androidannotations:rest-spring:$AAVersion"
+
+    // Dependencies for JSON Mapping
+    compile 'org.springframework.android:spring-android-rest-template:2.0.0.M1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.4'
 
     compile 'com.android.support:support-v4:24.2.1'
     testCompile 'junit:junit:4.12'

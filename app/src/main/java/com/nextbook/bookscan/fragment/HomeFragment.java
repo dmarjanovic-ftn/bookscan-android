@@ -1,4 +1,4 @@
-package fragment;
+package com.nextbook.bookscan.fragment;
 
 import android.support.v4.app.Fragment;
 

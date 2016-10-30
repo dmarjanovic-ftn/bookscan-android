@@ -12,13 +12,12 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.nextbook.bookscan.R;
+import com.nextbook.bookscan.fragment.HomeFragment_;
+import com.nextbook.bookscan.fragment.ScanBookFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-
-import fragment.HomeFragment_;
-import fragment.ScanBookFragment_;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
             case R.id.scan:
                 return ScanBookFragment_.builder().build();
             default:
-                throw new IllegalArgumentException("No fragment with id " + fragmentId);
+                throw new IllegalArgumentException("No com.nextbook.bookscan.fragment with id " + fragmentId);
         }
     }
 }
