@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_book"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nextbook.bookscan.activity.BookActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/book_cover_height"
+        android:background="@drawable/holmes"
+        android:id="@+id/imageView" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/book_cover_overlay_height"
+        android:background="@color/colorCoverOverlay"
+        android:layout_marginTop="-80dp">
+
+        <TextView
+            android:id="@+id/bookRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingRight="16dp"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="22pt"
+            android:text="4.5" />
+
+        <TextView
+            android:id="@+id/bookStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingRight="13dp"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="24pt"
+            android:layout_marginTop="-40dp"
+            android:text="....." />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bookTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titleFontSize" />
+
+    <TextView
+        android:id="@+id/bookAuthors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/bookLanguage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/bookYear"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorTextLight"
+        android:background="@color/colorBlack"
+        android:text="@string/books_recommended_for_you" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recommendedBooks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlack"
+        android:orientation="horizontal"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+</LinearLayout>

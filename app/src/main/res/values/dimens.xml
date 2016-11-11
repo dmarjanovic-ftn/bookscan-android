@@ -6,4 +6,8 @@
     <dimen name="padding_top_large">36dp</dimen>
     <dimen name="padding_top_middle">18dp</dimen>
     <dimen name="padding_top_small">9dp</dimen>
+
+    <dimen name="book_cover_height">220dp</dimen>
+    <dimen name="book_cover_overlay_height">80dp</dimen>
+    <dimen name="titleFontSize">14pt</dimen>
 </resources>

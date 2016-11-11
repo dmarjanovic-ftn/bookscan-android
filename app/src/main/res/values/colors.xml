@@ -5,4 +5,7 @@
     <color name="colorAccent">#EEEEEE</color>
     <color name="colorTextWhite">#FFFFFF</color>
     <color name="colorTextLight">#EEEEEE</color>
+
+    <color name="colorCoverOverlay">#99000000</color>
+    <color name="colorBlack">#000000</color>
 </resources>

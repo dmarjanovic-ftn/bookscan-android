@@ -7,24 +7,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
-
-        <Button
-            android:id="@+id/btnScan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SCAN BOOK"/>
+            android:text="dssdadsa"/>
 
-        <TextView
-            android:id="@+id/bookInfo"
+        <Button
+            android:id="@+id/scanButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Scan Book" />
+
     </LinearLayout>
 
 </FrameLayout>

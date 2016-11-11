@@ -3,6 +3,7 @@
     package="com.nextbook.bookscan">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity_"></activity>
+        <activity android:name=".activity.MainActivity_" />
+        <activity android:name=".activity.BookActivity_" />
     </application>
 
 </manifest>
