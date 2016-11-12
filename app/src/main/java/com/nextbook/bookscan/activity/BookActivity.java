@@ -49,6 +49,12 @@ public class BookActivity extends AppCompatActivity {
 
     private Book book;
 
+    @AfterExtras
+    void getBookData() {
+        final Gson gson = new Gson();
+        this.book = gson.fromJson(jsonBook, Book.class);
+    }
+
     @AfterViews
     void setToolbar() {
         setSupportActionBar(toolbar);
@@ -69,12 +75,6 @@ public class BookActivity extends AppCompatActivity {
 
         adapter.setItems(books);
         recommendedBooks.setAdapter(adapter);
-    }
-
-    @AfterExtras
-    void getBookData() {
-        final Gson gson = new Gson();
-        this.book = gson.fromJson(jsonBook, Book.class);
     }
 
     @AfterViews

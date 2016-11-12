@@ -10,4 +10,5 @@
     <dimen name="book_cover_height">220dp</dimen>
     <dimen name="book_cover_overlay_height">80dp</dimen>
     <dimen name="titleFontSize">14pt</dimen>
+    <dimen name="header_size">20sp</dimen>
 </resources>

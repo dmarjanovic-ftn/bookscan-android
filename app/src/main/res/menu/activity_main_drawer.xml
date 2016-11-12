@@ -14,9 +14,14 @@
             android:title="@string/scan" />
 
         <item
+            android:id="@+id/my_books"
+            android:icon="@drawable/ic_import_contacts_white_24dp"
+            android:title="@string/books_i_ve_rated" />
+
+        <!--item
             android:id="@+id/logout"
             android:icon="@drawable/ic_thumb_down_white_24dp"
-            android:title="@string/logout" />
+            android:title="@string/logout" /-->
     </group>
 
 </menu>

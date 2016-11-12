@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 
 import com.nextbook.bookscan.R;
 import com.nextbook.bookscan.fragment.HomeFragment_;
+import com.nextbook.bookscan.fragment.MyBooksFragment_;
 import com.nextbook.bookscan.fragment.ScanBookFragment_;
 
 import org.androidannotations.annotations.AfterViews;
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
                 return HomeFragment_.builder().build();
             case R.id.scan:
                 return ScanBookFragment_.builder().build();
+            case R.id.my_books:
+                return MyBooksFragment_.builder().build();
             default:
                 throw new IllegalArgumentException("No com.nextbook.bookscan.fragment with id " + fragmentId);
         }

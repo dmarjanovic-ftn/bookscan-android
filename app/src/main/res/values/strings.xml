@@ -19,4 +19,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="books_recommended_for_you">Books recommended for you:</string>
+    <string name="books_i_ve_rated">Books I\'ve rated</string>
+    <string name="scan_book">Scan your book's ISBN</string>
+    <string name="welcome_message">Welcome to BookScan App!</string>
 </resources>

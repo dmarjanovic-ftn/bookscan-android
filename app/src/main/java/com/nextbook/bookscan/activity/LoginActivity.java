@@ -1,7 +1,11 @@
 package com.nextbook.bookscan.activity;
 
+import android.support.annotation.UiThread;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.nextbook.bookscan.R;
 
@@ -18,9 +22,22 @@ public class LoginActivity extends AppCompatActivity {
     @ViewById
     EditText password;
 
+    @ViewById
+    Button login;
+
+    @ViewById
+    ProgressBar loginProgressBar;
+
     @Click
     void login() {
+        showProgressBar();
         MainActivity_.intent(this).start();
         finish();
+    }
+
+    @UiThread
+    void showProgressBar() {
+        loginProgressBar.setVisibility(View.VISIBLE);
+        login.setVisibility(View.INVISIBLE);
     }
 }
