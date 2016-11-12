@@ -35,6 +35,12 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
+    @Click
+    void register() {
+        RegisterActivity_.intent(this).start();
+        finish();
+    }
+
     @UiThread
     void showProgressBar() {
         loginProgressBar.setVisibility(View.VISIBLE);

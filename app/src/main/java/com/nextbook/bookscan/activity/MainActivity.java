@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     }
 
     @AfterViews
+    void setInitialFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame, getFragmentById(R.id.home))
+                .commit();
+    }
+
+    @AfterViews
     void setDrawer() {
         // FIXME Better implementation
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
