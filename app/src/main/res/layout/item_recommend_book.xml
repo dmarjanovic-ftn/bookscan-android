@@ -5,12 +5,11 @@
     android:layout_height="72dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/cover"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:paddingLeft="@dimen/padding_material"
-        android:paddingStart="@dimen/padding_material"
-        android:src="@drawable/sergioramos" />
+        android:paddingStart="@dimen/padding_material" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -38,19 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
+        <RatingBar
             android:id="@+id/rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="*****"/>
+            android:rating="3.5"
+            android:stepSize="0.5"
+            android:numStars="5"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"/>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/showMore"
-        android:layout_marginTop="24dp"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:background="@drawable/ic_more_vert_black_24dp" />
 
 </LinearLayout>

@@ -66,6 +66,7 @@ public class ScanBookFragment extends Fragment {
         final Gson gson = new Gson();
 
         this.book = bookService.getBookByISBN(isbn);
+        this.book.setIsbn(isbn);
 
         BookActivity_.intent(this).extra("jsonBook", gson.toJson(this.book)).start();
     }

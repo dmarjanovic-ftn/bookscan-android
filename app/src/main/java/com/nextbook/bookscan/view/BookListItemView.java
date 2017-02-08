@@ -2,6 +2,7 @@ package com.nextbook.bookscan.view;
 
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatRatingBar;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class BookListItemView extends LinearLayout {
     TextView authors;
 
     @ViewById
-    TextView rate;
+    AppCompatRatingBar rate;
 
     public BookListItemView(Context context) {
         super(context);
@@ -33,6 +34,6 @@ public class BookListItemView extends LinearLayout {
 
     public void bind(Book book) {
         title.setText(book.getTitle());
-        authors.setText(book.getAuthor());
+        authors.setText(book.getAuthors());
     }
 }

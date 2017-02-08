@@ -55,6 +55,8 @@ dependencies {
     // Circle Image
     compile 'de.hdodenhof:circleimageview:2.1.0'
 
+    compile "com.android.support:appcompat-v7:$SupportVersion"
+
     compile 'com.android.support:support-v4:24.2.1'
     testCompile 'junit:junit:4.12'
 }

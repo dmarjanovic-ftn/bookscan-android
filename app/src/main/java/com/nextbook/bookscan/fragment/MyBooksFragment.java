@@ -1,57 +1,63 @@
 package com.nextbook.bookscan.fragment;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nextbook.bookscan.R;
-import com.nextbook.bookscan.adapter.MyBooksListAdapter;
+import com.nextbook.bookscan.activity.BookActivity_;
+import com.nextbook.bookscan.adapter.RecommendedBooksListAdapter;
 import com.nextbook.bookscan.model.Book;
+import com.nextbook.bookscan.rest.BookService;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ItemClick;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.rest.spring.annotations.RestService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @EFragment(R.layout.fragment_my_books)
 public class MyBooksFragment extends Fragment {
 
+    private List<Book> books;
+
+    @RestService
+    BookService bookService;
+
     @ViewById
-    ListView myBooks;
+    ListView recommendedBooks;
 
     @Bean
-    MyBooksListAdapter adapter;
+    RecommendedBooksListAdapter adapter;
 
     @AfterViews
-    void bindAdapter() {
-        List<Book> books = new ArrayList<>();
-        books.add(new Book("Na Drini cuprija", "Ivo Andric", "srpski", "2008", "Laguna"));
-        books.add(new Book("Darkly dreaming Dexter", "Jeff Lindsay", "srpski", "2008", "Vulkan"));
-        books.add(new Book("Dearly Devoted Dexter", "Jeff Lindsay", "srpski", "2008", "Hehe"));
-        books.add(new Book("Dexter in the Dark", "Jeff Lindsay", "srpski", "2008", "Vulkan"));
-        books.add(new Book("Double Dexter", "Jeff Lindsay", "srpski", "2008", "Laguna"));
-        books.add(new Book("Dexter is Dead", "Jeff Lindsay", "srpski", "2008", "Laguna"));
-        books.add(new Book("Dexter's Final Cut", "Jeff Lindsay", "srpski", "2008", "Hehe"));
-        books.add(new Book("Na Drini cuprija", "Ivo Andric", "srpski", "2008", "Laguna"));
-        books.add(new Book("Darkly dreaming Dexter", "Jeff Lindsay", "srpski", "2008", "Vulkan"));
-        books.add(new Book("Dearly Devoted Dexter", "Jeff Lindsay", "srpski", "2008", "Hehe"));
-        books.add(new Book("Dexter in the Dark", "Jeff Lindsay", "srpski", "2008", "Vulkan"));
-        books.add(new Book("Double Dexter", "Jeff Lindsay", "srpski", "2008", "Laguna"));
-        books.add(new Book("Dexter is Dead", "Jeff Lindsay", "srpski", "2008", "Laguna"));
-        books.add(new Book("Dexter's Final Cut", "Jeff Lindsay", "srpski", "2008", "Hehe"));
+    void getData() {
+        getRecommended();
+    }
 
+    @Background
+    void getRecommended() {
+        this.books = bookService.getRecommendedBooks();
+        updateList();
+    }
+
+    @UiThread
+    void updateList() {
         adapter.books = books;
-
-        myBooks.setAdapter(adapter);
+        recommendedBooks.setAdapter(adapter);
     }
 
     @ItemClick
-    void myBooksItemClicked(Book book) {
-        Toast.makeText(getContext(), book.getTitle(), Toast.LENGTH_SHORT).show();
+    void recommendedBooksItemClicked(Book book) {
+        Log.d("A", "Clicked");
+        final Gson gson = new Gson();
+        BookActivity_.intent(this).extra("jsonBook", gson.toJson(book)).start();
     }
 
 }

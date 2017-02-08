@@ -117,6 +117,17 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:indeterminate="true"/>
+
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:textColor="@color/colorTextLight"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
     </RelativeLayout>
 
     <LinearLayout

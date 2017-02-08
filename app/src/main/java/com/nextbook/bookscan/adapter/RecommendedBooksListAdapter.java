@@ -15,7 +15,7 @@ import org.androidannotations.annotations.RootContext;
 import java.util.List;
 
 @EBean
-public class MyBooksListAdapter extends BaseAdapter {
+public class RecommendedBooksListAdapter extends BaseAdapter {
 
     public List<Book> books;
 

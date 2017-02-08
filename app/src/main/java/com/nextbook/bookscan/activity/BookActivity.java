@@ -1,30 +1,30 @@
 package com.nextbook.bookscan.activity;
 
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.nextbook.bookscan.R;
-import com.nextbook.bookscan.adapter.BookListAdapter;
 import com.nextbook.bookscan.model.Book;
+import com.nextbook.bookscan.rest.BookService;
 
 import org.androidannotations.annotations.AfterExtras;
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.androidannotations.rest.spring.annotations.RestService;
 
 @EActivity(R.layout.activity_book)
 public class BookActivity extends AppCompatActivity {
 
-    @Bean
-    BookListAdapter adapter;
+    @RestService
+    BookService bookService;
 
     @ViewById
     Toolbar toolbar;
@@ -42,7 +42,7 @@ public class BookActivity extends AppCompatActivity {
     TextView bookYear;
 
     @ViewById
-    RecyclerView recommendedBooks;
+    TextView bookRate;
 
     @Extra
     String jsonBook;
@@ -61,28 +61,56 @@ public class BookActivity extends AppCompatActivity {
     }
 
     @AfterViews
-    void bindAdapter() {
-        // TODO
-        // recommendedBooks
-        List<Book> books = new ArrayList<>();
-        books.add(new Book("Na Drini cuprija", "Ivo Andric", "srpski", "2008", "Laguna"));
-        books.add(new Book("Darkly dreaming Dexter", "Jeff Lindsay", "srpski", "2008", "Vulkan"));
-        books.add(new Book("Dearly Devoted Dexter", "Jeff Lindsay", "srpski", "2008", "Hehe"));
-        books.add(new Book("Dexter in the Dark", "Jeff Lindsay", "srpski", "2008", "Vulkan"));
-        books.add(new Book("Double Dexter", "Jeff Lindsay", "srpski", "2008", "Laguna"));
-        books.add(new Book("Dexter is Dead", "Jeff Lindsay", "srpski", "2008", "Laguna"));
-        books.add(new Book("Dexter's Final Cut", "Jeff Lindsay", "srpski", "2008", "Hehe"));
-
-        adapter.setItems(books);
-        recommendedBooks.setAdapter(adapter);
-    }
-
-    @AfterViews
     void updateDataUI() {
         bookTitle.setText(this.book.getTitle());
-        bookAuthors.setText(this.book.getAuthor());
+        bookAuthors.setText(this.book.getAuthors());
         bookLanguage.setText(this.book.getLanguage());
-        bookYear.setText(this.book.getYear());
+        bookYear.setText(String.valueOf(this.book.getYear()));
     }
+
+    @AfterInject
+    void afterInject() {
+        getRating();
+    }
+
+    @Background
+    void getRating() {
+        final Double rating = bookService.getAverageRating(book.getIsbn());
+        updateRating(rating);
+    }
+
+    @UiThread
+    void updateRating(Double rating) {
+        bookRate.setText(String.valueOf(rating));
+    }
+
+    @Click({R.id.rate1, R.id.rate2, R.id.rate3, R.id.rate4, R.id.rate5})
+    void rateBook(TextView view) {
+        performRating(book.getIsbn(), getClickedRate(view));
+    }
+
+    @Background
+    void performRating(String isbn, Integer mark) {
+        bookService.rateBook(isbn, mark);
+        getRating();
+    }
+
+    private Integer getClickedRate(TextView view) {
+        switch (view.getId()) {
+            case R.id.rate1:
+                return 1;
+            case R.id.rate2:
+                return 2;
+            case R.id.rate3:
+                return 3;
+            case R.id.rate4:
+                return 4;
+            case R.id.rate5:
+                return 5;
+            default:
+                return 0;
+        }
+    }
+
 
 }
