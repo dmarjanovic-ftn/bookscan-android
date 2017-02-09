@@ -86,13 +86,29 @@ public class BookActivity extends AppCompatActivity {
 
     @Click({R.id.rate1, R.id.rate2, R.id.rate3, R.id.rate4, R.id.rate5})
     void rateBook(TextView view) {
-        performRating(book.getIsbn(), getClickedRate(view));
+        final Integer rate = getClickedRate(view);
+
+        performRating(book.getIsbn(), rate);
     }
 
     @Background
     void performRating(String isbn, Integer mark) {
         bookService.rateBook(isbn, mark);
         getRating();
+        changeStarColors(mark);
+    }
+
+    @UiThread
+    void changeStarColors(Integer number) {
+        for (int i = 1; i <= number; ++i) {
+            TextView view = (TextView) findViewById(getItemId(i));
+            view.setTextColor(getResources().getColorStateList(R.color.colorRatingGold));
+        }
+
+        for (int i = number + 1; i <= 5; ++i) {
+            TextView view = (TextView) findViewById(getItemId(i));
+            view.setTextColor(getResources().getColorStateList(R.color.colorRatingGray));
+        }
     }
 
     private Integer getClickedRate(TextView view) {
@@ -112,5 +128,21 @@ public class BookActivity extends AppCompatActivity {
         }
     }
 
+    private int getItemId(Integer number) {
+        switch (number) {
+            case 1:
+                return R.id.rate1;
+            case 2:
+                return R.id.rate2;
+            case 3:
+                return R.id.rate3;
+            case 4:
+                return R.id.rate4;
+            case 5:
+                return R.id.rate5;
+        }
+
+        return -1;
+    }
 
 }

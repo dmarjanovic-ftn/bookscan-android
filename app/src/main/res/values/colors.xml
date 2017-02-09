@@ -8,4 +8,7 @@
 
     <color name="colorCoverOverlay">#99000000</color>
     <color name="colorBlack">#000000</color>
+
+    <color name="colorRatingGray">#AAAAAA</color>
+    <color name="colorRatingGold">#FFD600</color>
 </resources>

@@ -1,7 +1,6 @@
 package com.nextbook.bookscan.fragment;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -23,7 +22,7 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import java.util.List;
 
 @EFragment(R.layout.fragment_my_books)
-public class MyBooksFragment extends Fragment {
+public class RecommendedBooksFragment extends Fragment {
 
     private List<Book> books;
 
@@ -55,7 +54,6 @@ public class MyBooksFragment extends Fragment {
 
     @ItemClick
     void recommendedBooksItemClicked(Book book) {
-        Log.d("A", "Clicked");
         final Gson gson = new Gson();
         BookActivity_.intent(this).extra("jsonBook", gson.toJson(book)).start();
     }
