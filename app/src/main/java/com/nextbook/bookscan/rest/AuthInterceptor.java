@@ -1,5 +1,7 @@
 package com.nextbook.bookscan.rest;
 
+import android.util.Log;
+
 import com.nextbook.bookscan.util.AuthToken;
 
 import org.androidannotations.annotations.EBean;
@@ -18,6 +20,8 @@ public class AuthInterceptor implements ClientHttpRequestInterceptor {
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
         HttpHeaders headers = request.getHeaders();
         headers.set("X-AUTH-TOKEN", AuthToken.token);
+        if (AuthToken.token != null)
+        Log.d("TAG", AuthToken.token.toString());
         return execution.execute(request, body);
     }
 }

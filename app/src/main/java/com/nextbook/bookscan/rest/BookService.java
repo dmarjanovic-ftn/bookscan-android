@@ -8,12 +8,13 @@ import org.androidannotations.rest.spring.annotations.Get;
 import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Rest;
+import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 import java.util.List;
 
-@Rest(rootUrl = Constants.SERVER_URL, converters = MappingJackson2HttpMessageConverter.class)
-public interface BookService {
+@Rest(rootUrl = Constants.SERVER_URL, converters = MappingJackson2HttpMessageConverter.class, interceptors = AuthInterceptor.class)
+public interface BookService extends RestClientErrorHandling {
 
     @Get("api/books/{isbn}")
     Book getBookByISBN(@Path String isbn);
